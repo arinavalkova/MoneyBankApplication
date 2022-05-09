@@ -19,7 +19,7 @@
                              Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
                 <Grid Margin="0 20 0 0">
                     <Button Content="Sign up" HorizontalAlignment="Left" />
-                    <Button Content="Back" Click="Back_OnClick" HorizontalAlignment="Right" />
+                    <Button Content="Back" HorizontalAlignment="Right" />
                 </Grid>
             </StackPanel>
         </Border>

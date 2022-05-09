@@ -8,12 +8,5 @@ namespace MoneyBankApplication.Views.Windows
         {
             InitializeComponent();
         }
-
-        private void Back_OnClick(object sender, RoutedEventArgs e)
-        {
-            var mainWindow = new MainWindow();
-            mainWindow.Show();
-            Hide();
-        }
     }
 }

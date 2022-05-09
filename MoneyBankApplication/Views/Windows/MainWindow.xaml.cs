@@ -8,12 +8,5 @@ namespace MoneyBankApplication.Views.Windows
         {
             InitializeComponent();
         }
-
-        private void SignUp_OnClick(object sender, RoutedEventArgs e)
-        {
-            var authorizationWindow = new AuthorizationWindow();
-            authorizationWindow.Show();
-            Hide();
-        }
     }
 }
