@@ -1,15 +1,17 @@
-﻿using MoneyBankApplication.ViewModels.Base;
+﻿using System;
+using MoneyBankApplication.ViewModels.Base;
 
 namespace MoneyBankApplication.ViewModels
 {
     internal class MainWindowViewModel : ViewModel
     {
-        private string? _title = "MoneyBank";
+        private string? _login;
 
-        public string? Title
+        public string? Login
         {
-            get => _title;
-            set => Set(ref _title, value);
+            get => _login;
+            set => Set(ref _login, value);
         }
+        
     }
 }

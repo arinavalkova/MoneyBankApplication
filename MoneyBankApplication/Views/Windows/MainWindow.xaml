@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:MoneyBankApplication"
         xmlns:vm="clr-namespace:MoneyBankApplication.ViewModels"
         mc:Ignorable="d"
-        Title="{Binding Title}" Height="600" Width="800">
+        Title="MoneyBank" Height="600" Width="800">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
@@ -19,7 +19,7 @@
             <StackPanel Margin="100 0">
                 <TextBlock Text="Money Bank" FontSize="50" FontFamily="Jokerman" HorizontalAlignment="Center" />
                 <TextBox Margin="0 20" materialDesign:HintAssist.Hint="Enter login"
-                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Login}" />
                 <PasswordBox materialDesign:HintAssist.Hint="Enter password"
                              Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
                 <Grid Margin="0 20 0 0">
