@@ -2,9 +2,9 @@
 
 namespace MoneyBankApplication.Views.Windows
 {
-    public partial class MainWindow : Window
+    public partial class RegistrationWindow : Window
     {
-        public MainWindow()
+        public RegistrationWindow()
         {
             InitializeComponent();
         }
