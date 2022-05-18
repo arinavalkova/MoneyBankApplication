@@ -8,16 +8,16 @@ using System.Windows.Threading;
 namespace MoneyBankApplication.Infrastructure.Commands.Base
 {
    /// <summary>
-  /// The AsynchronousCommand is a Command that runs on a thread from the thread pool.
+  /// The AsyncCommand is a Command that runs on a thread from the thread pool.
   /// </summary>
-  public class AsynchronousCommand : Command, INotifyPropertyChanged
+  public class AsyncCommand : Command, INotifyPropertyChanged
   {
     /// <summary>
-    /// Initializes a new instance of the <see cref="AsynchronousCommand"/> class.
+    /// Initializes a new instance of the <see cref="AsyncCommand"/> class.
     /// </summary>
     /// <param name="action">The action.</param>
     /// <param name="canExecute">if set to <c>true</c> the command can execute.</param>
-    public AsynchronousCommand(Action action, bool canExecute = true) 
+    public AsyncCommand(Action action, bool canExecute = true) 
       : base(action, canExecute)
     { 
       //  Initialise the command.
@@ -25,11 +25,11 @@ namespace MoneyBankApplication.Infrastructure.Commands.Base
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="AsynchronousCommand"/> class.
+    /// Initializes a new instance of the <see cref="AsyncCommand"/> class.
     /// </summary>
     /// <param name="parameterizedAction">The parameterized action.</param>
     /// <param name="canExecute">if set to <c>true</c> [can execute].</param>
-    public AsynchronousCommand(Action<object> parameterizedAction, bool canExecute = true)
+    public AsyncCommand(Action<object> parameterizedAction, bool canExecute = true)
       : base(parameterizedAction, canExecute) 
     {
 

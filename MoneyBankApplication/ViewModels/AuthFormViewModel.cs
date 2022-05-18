@@ -61,22 +61,43 @@ namespace MoneyBankApplication.ViewModels
 
         private void DoSignInCommand(object parameter)
         {
-            if (parameter is PasswordBox passwordBox)
-            {
-                var password = passwordBox.Password;
-                ResultMessage = new StringBuilder("Welcome " + Login + " with " + password).ToString();
-            }
-            else
-            {
-                ResultMessage = "Error: bad password";
-            }
+            // if (parameter is PasswordBox passwordBox)
+            // {
+            //     var password = passwordBox.Password;
+            //     ResultMessage = new StringBuilder("Welcome " + Login + " with " + password).ToString();
+            // }
+            // else
+            // {
+            //     ResultMessage = "Error: bad password";
+            // }
         }
 
         #endregion
+        
+        private AsyncCommand asyncCommand2;
+
+        /// <summary>
+        /// Gets the command.
+        /// </summary>
+        public AsyncCommand AsyncCommand2
+        {
+            get { return asyncCommand2; }
+        }
 
         public AuthFormViewModel()
         {
             SignInCommand = new Command(DoSignInCommand);
+            asyncCommand2 = new AsyncCommand(
+                () =>
+                {
+                    for (char c = 'A'; c <= 'Z'; c++)
+                    {
+                        //  Сообщать о прогрессе
+                        asyncCommand2.ReportProgress(() => { ResultMessage += (c.ToString()); });
+
+                        System.Threading.Thread.Sleep(100);
+                    }
+                });
         }
     }
 }
