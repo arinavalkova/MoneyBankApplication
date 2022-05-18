@@ -10,11 +10,8 @@
     <ItemGroup>
       <PackageReference Include="MahApps.Metro" Version="2.4.9" />
       <PackageReference Include="MaterialDesignThemes" Version="4.6.0-ci172" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Data" />
-      <Folder Include="Models" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.0" />
     </ItemGroup>
 
 </Project>

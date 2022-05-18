@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using MoneyBankApplication.Data;
 using MoneyBankApplication.Infrastructure.Commands;
 using MoneyBankApplication.Infrastructure.Commands.Base;
 
@@ -9,6 +10,7 @@ namespace MoneyBankApplication.ViewModels
     internal class AuthFormViewModel : DependencyObject
     {
         private const string SignInStateString = "Signing in...";
+
         #region Login
 
         private readonly DependencyProperty _loginProperty = DependencyProperty.Register(
@@ -54,11 +56,11 @@ namespace MoneyBankApplication.ViewModels
             get => (string) GetValue(_resultMessage);
             set => SetValue(_resultMessage, value);
         }
-        
+
         #endregion
 
         private readonly SignInAsyncCommand _signInAsyncCommand;
-        
+
         public AsyncCommand SignInCommand => _signInAsyncCommand.AsyncCommand;
 
         public AuthFormViewModel()
