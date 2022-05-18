@@ -1,12 +1,14 @@
 ﻿using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using MoneyBankApplication.Infrastructure.Commands;
 using MoneyBankApplication.Infrastructure.Commands.Base;
 
 namespace MoneyBankApplication.ViewModels
 {
     internal class AuthFormViewModel : DependencyObject
     {
+        private const string SignInStateString = "Signing in...";
         #region Login
 
         private readonly DependencyProperty _loginProperty = DependencyProperty.Register(
@@ -52,52 +54,16 @@ namespace MoneyBankApplication.ViewModels
             get => (string) GetValue(_resultMessage);
             set => SetValue(_resultMessage, value);
         }
-
-        #endregion
-
-        #region SignInCommand
-
-        public Command SignInCommand { get; }
-
-        private void DoSignInCommand(object parameter)
-        {
-            // if (parameter is PasswordBox passwordBox)
-            // {
-            //     var password = passwordBox.Password;
-            //     ResultMessage = new StringBuilder("Welcome " + Login + " with " + password).ToString();
-            // }
-            // else
-            // {
-            //     ResultMessage = "Error: bad password";
-            // }
-        }
-
-        #endregion
         
-        private AsyncCommand asyncCommand2;
+        #endregion
 
-        /// <summary>
-        /// Gets the command.
-        /// </summary>
-        public AsyncCommand AsyncCommand2
-        {
-            get { return asyncCommand2; }
-        }
+        private readonly SignInAsyncCommand _signInAsyncCommand;
+        
+        public AsyncCommand SignInCommand => _signInAsyncCommand.AsyncCommand;
 
         public AuthFormViewModel()
         {
-            SignInCommand = new Command(DoSignInCommand);
-            asyncCommand2 = new AsyncCommand(
-                () =>
-                {
-                    for (char c = 'A'; c <= 'Z'; c++)
-                    {
-                        //  Сообщать о прогрессе
-                        asyncCommand2.ReportProgress(() => { ResultMessage += (c.ToString()); });
-
-                        System.Threading.Thread.Sleep(100);
-                    }
-                });
+            _signInAsyncCommand = new SignInAsyncCommand(result => ResultMessage += result);
         }
     }
 }

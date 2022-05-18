@@ -6,6 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:MoneyBankApplication"
         xmlns:vm="clr-namespace:MoneyBankApplication.ViewModels"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
         Title="MoneyBank" Width="700" Height="400">
     <Window.DataContext>
@@ -21,12 +22,10 @@
                 <PasswordBox materialDesign:HintAssist.Hint="Enter password" Name="Password"
                              Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
                 <Grid Margin="0 20 0 0">
-                    <!-- <Button Content="Sign in" HorizontalAlignment="Left" Command="{Binding SignInCommand}" -->
-                    <!--         CommandParameter="{Binding ElementName=Password}" /> -->
-                    <!-- <Button Content="Sign up" HorizontalAlignment="Right" /> -->
-                    <Button Content="Asynchronous Command" Command="{Binding AsyncCommand2}"
-                            Visibility="{Binding AsyncCommand2.IsExecuting
-                            }" />
+                    <Button Content="Sign in" HorizontalAlignment="Left" Command="{Binding SignInCommand}"
+                            CommandParameter="{Binding ElementName=Password}" 
+                            Visibility="{Binding SignInCommand.IsExecuting}"/>
+                    <Button Content="Sign up" HorizontalAlignment="Right" />
                 </Grid>
             </StackPanel>
         </Border>
@@ -34,9 +33,10 @@
             <TextBlock Text="{Binding ResultMessage}" />
         </StackPanel>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"
-            Visibility="{Binding AsyncCommand2.IsExecuting, 
+            Visibility="{Binding SignInCommand.IsExecuting, 
                         Converter={StaticResource BooleanToVisibilityConverter}}">
-            <ProgressBar Height="20" Width="120" IsIndeterminate="True" />
+            <mah:ProgressRing Foreground="{DynamicResource AccentColorBrush}"
+                              IsActive="True" />
         </StackPanel>
     </Grid>
 </Window>
