@@ -3,6 +3,7 @@ using System.Windows;
 using MoneyBankApplication.Data;
 using MoneyBankApplication.Infrastructure.Commands.Base;
 using MoneyBankApplication.Services;
+using MoneyBankApplication.Services.SignIn;
 
 namespace MoneyBankApplication.Infrastructure.Commands
 {
@@ -12,19 +13,13 @@ namespace MoneyBankApplication.Infrastructure.Commands
 
         public AsyncCommand AsyncCommand => _asyncCommand;
 
-        public SignInAsyncCommand(Action<string> resultMessage)
+        public SignInAsyncCommand(Action<string> resultMessage, SignInService signInService)
         {
             _asyncCommand = new AsyncCommand(
                 login =>
                 {
-                    new SignInService().Invoke(
+                    signInService.SignIn(
                         result => _asyncCommand?.ReportProgress(() => { resultMessage(result); }), (string) login);
-                    // for (var c = 'A'; c <= 'Z'; c++)
-                    // {
-                    //     _asyncCommand?.ReportProgress(() => { resultMessage(c.ToString()); });
-                    //
-                    //     System.Threading.Thread.Sleep(100);
-                    // }
                 });
         }
     }

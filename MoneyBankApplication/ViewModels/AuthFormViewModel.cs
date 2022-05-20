@@ -4,10 +4,12 @@ using System.Windows.Controls;
 using MoneyBankApplication.Data;
 using MoneyBankApplication.Infrastructure.Commands;
 using MoneyBankApplication.Infrastructure.Commands.Base;
+using MoneyBankApplication.Services;
+using MoneyBankApplication.Services.SignIn;
 
 namespace MoneyBankApplication.ViewModels
 {
-    internal class AuthFormViewModel : DependencyObject
+    public class AuthFormViewModel : DependencyObject
     {
         private const string SignInStateString = "Signing in...";
 
@@ -63,9 +65,9 @@ namespace MoneyBankApplication.ViewModels
 
         public AsyncCommand SignInCommand => _signInAsyncCommand.AsyncCommand;
 
-        public AuthFormViewModel()
+        public AuthFormViewModel(SignInService signInService)
         {
-            _signInAsyncCommand = new SignInAsyncCommand(result => ResultMessage += result);
+            _signInAsyncCommand = new SignInAsyncCommand( result => ResultMessage += result, signInService);
         }
     }
 }

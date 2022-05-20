@@ -6,8 +6,10 @@ namespace MoneyBankApplication.Data
 {
     public class MoneyBankDbContext : DbContext
     {
+        public int Key { get; set; }
         public MoneyBankDbContext(DbContextOptions<MoneyBankDbContext> options) : base(options)
         {
+            Key = 100;
             Database.EnsureCreated();
         }
         

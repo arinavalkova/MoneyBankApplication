@@ -7,11 +7,12 @@
         xmlns:local="clr-namespace:MoneyBankApplication"
         xmlns:vm="clr-namespace:MoneyBankApplication.ViewModels"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-        mc:Ignorable="d"
-        Title="MoneyBank" Width="700" Height="400">
-    <Window.DataContext>
-        <vm:AuthFormViewModel />
-    </Window.DataContext>
+        Title="MoneyBank" Width="700" Height="400"
+        DataContext="{Binding Source={StaticResource Locator}, Path=AuthFormViewModel}"> <!-- mc:Ignorable="d" -->
+    <!-- <Window.DataContext> -->
+    <!--     <vm:AuthFormViewModel/> -->
+    <!--     ~1~ d:DataContext="{d:DesignInstance vm:AuthFormViewModel, IsDesignTimeCreatable=True}" @1@ -->
+    <!-- </Window.DataContext> -->
 
     <Grid Background="White">
         <Border Padding="40">
@@ -24,7 +25,8 @@
                 <Grid Margin="0 20 0 0">
                     <Button Content="Sign in" HorizontalAlignment="Left" Command="{Binding SignInCommand}"
                             CommandParameter="{Binding Login}"
-                            Visibility="{Binding SignInCommand.IsExecuting}"/> <!-- CommandParameter="{Binding ElementName=Password}"  -->
+                            Visibility="{Binding SignInCommand.IsExecuting}" />
+                    <!-- CommandParameter="{Binding ElementName=Password}"  -->
                     <Button Content="Sign up" HorizontalAlignment="Right" />
                 </Grid>
             </StackPanel>
@@ -33,7 +35,7 @@
             <TextBlock Text="{Binding ResultMessage}" />
         </StackPanel>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"
-            Visibility="{Binding SignInCommand.IsExecuting, 
+                    Visibility="{Binding SignInCommand.IsExecuting,
                         Converter={StaticResource BooleanToVisibilityConverter}}">
             <mah:ProgressRing Foreground="{DynamicResource AccentColorBrush}"
                               IsActive="True" />

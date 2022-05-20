@@ -2,10 +2,17 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:MoneyBankApplication"
+             xmlns:locators="clr-namespace:MoneyBankApplication.ViewModels.Locators"
              Startup="OnStartup"><!-- StartupUri="Views/Windows/AuthorizationWindow.xaml" -->
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <locators:AuthFormViewModelLocator
+                        x:Key="Locator" />
+ 
+                    <!-- Application styles definition -->
+                </ResourceDictionary>
                 <ResourceDictionary
                     Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary
