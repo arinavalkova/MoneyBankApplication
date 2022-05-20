@@ -1,18 +1,12 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using MoneyBankApplication.Data;
+﻿using System.Windows;
 using MoneyBankApplication.Infrastructure.Commands;
 using MoneyBankApplication.Infrastructure.Commands.Base;
-using MoneyBankApplication.Services;
 using MoneyBankApplication.Services.SignIn;
 
 namespace MoneyBankApplication.ViewModels
 {
     public class AuthFormViewModel : DependencyObject
     {
-        private const string SignInStateString = "Signing in...";
-
         #region Login
 
         private readonly DependencyProperty _loginProperty = DependencyProperty.Register(

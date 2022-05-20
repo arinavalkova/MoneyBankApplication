@@ -7,6 +7,7 @@ namespace MoneyBankApplication.Services.SignIn
 {
     public class MoneyBankDbSignInService : ISignInService
     {
+        private const string SignInStateString = "Signing in...";
         private readonly MoneyBankDbContext _moneyBankDbContext;
 
         public MoneyBankDbSignInService(MoneyBankDbContext moneyBankDbContext)
@@ -16,15 +17,9 @@ namespace MoneyBankApplication.Services.SignIn
 
         public void SignIn(Action<string> resultMessage, string login)
         {
+            resultMessage(SignInStateString);
             var user = _moneyBankDbContext.Users.FirstOrDefault(x => x.Login == login);
-            if (user != null)
-            {
-                resultMessage(new StringBuilder("Hello " + user.Name + "!").ToString());
-            }
-            else
-            {
-                resultMessage("Bad login!");
-            }
+            resultMessage(user != null ? new StringBuilder("Hello " + user.Name + "!").ToString() : "Bad login!");
         }
     }
 }
