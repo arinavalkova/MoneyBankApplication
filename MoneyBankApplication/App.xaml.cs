@@ -36,8 +36,8 @@ namespace MoneyBankApplication
             });
             services.AddTransient<SignInAsyncCommand>();
             services.AddTransient(provider =>
-                new SignInService(provider.GetService<MoneyBankDbContext>()!));
-            services.AddSingleton(provider => new AuthFormViewModel(provider.GetService<SignInService>()!));
+                new MoneyBankDbSignInService(provider.GetService<MoneyBankDbContext>()!));
+            services.AddSingleton(provider => new AuthFormViewModel(provider.GetService<MoneyBankDbSignInService>()!));
             services.AddTransient<AuthorizationWindow>();
         }
 

@@ -13,12 +13,12 @@ namespace MoneyBankApplication.Infrastructure.Commands
 
         public AsyncCommand AsyncCommand => _asyncCommand;
 
-        public SignInAsyncCommand(Action<string> resultMessage, SignInService signInService)
+        public SignInAsyncCommand(Action<string> resultMessage, MoneyBankDbSignInService moneyBankDbSignInService)
         {
             _asyncCommand = new AsyncCommand(
                 login =>
                 {
-                    signInService.SignIn(
+                    moneyBankDbSignInService.SignIn(
                         result => _asyncCommand?.ReportProgress(() => { resultMessage(result); }), (string) login);
                 });
         }

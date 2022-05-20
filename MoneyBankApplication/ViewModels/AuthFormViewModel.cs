@@ -65,9 +65,9 @@ namespace MoneyBankApplication.ViewModels
 
         public AsyncCommand SignInCommand => _signInAsyncCommand.AsyncCommand;
 
-        public AuthFormViewModel(SignInService signInService)
+        public AuthFormViewModel(MoneyBankDbSignInService moneyBankDbSignInService)
         {
-            _signInAsyncCommand = new SignInAsyncCommand( result => ResultMessage += result, signInService);
+            _signInAsyncCommand = new SignInAsyncCommand( result => ResultMessage = result, moneyBankDbSignInService);
         }
     }
 }
